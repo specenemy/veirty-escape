@@ -1,3 +1,85 @@
 [gd_scene format=3 uid="uid://b7gy73772jv73"]
 
+[ext_resource type="PackedScene" uid="uid://blmlekc8auvqe" path="res://assets/veritybig/scene.gltf" id="1_t8y77"]
+[ext_resource type="Script" uid="uid://cjnhavk03sf4k" path="res://scripts/player.gd" id="3_ly21k"]
+[ext_resource type="PackedScene" uid="uid://bdrpf1ichhgih" path="res://assets/veritymodel/scene.gltf" id="3_yl8ux"]
+[ext_resource type="PackedScene" uid="uid://cff31bol4c0sa" path="res://assets/chest/scene.gltf" id="4_bgpfy"]
+[ext_resource type="PackedScene" uid="uid://b2im2i038ej04" path="res://assets/torch/scene.gltf" id="5_mynxe"]
+[ext_resource type="PackedScene" uid="uid://c36mk2em5ighj" path="res://assets/tree/scene.gltf" id="6_tm8i7"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_tm8i7"]
+
+[sub_resource type="Sky" id="Sky_mynxe"]
+sky_material = SubResource("PhysicalSkyMaterial_tm8i7")
+
+[sub_resource type="Environment" id="Environment_dgfsc"]
+background_mode = 2
+background_energy_multiplier = 3.0
+sky = SubResource("Sky_mynxe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8y77"]
+albedo_color = Color(0, 0.47058824, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dgfsc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dgfsc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dgfsc"]
+height = 2.8586426
+
 [node name="Main" type="Node3D" unique_id=977084424]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1384905223]
+environment = SubResource("Environment_dgfsc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1945355970]
+transform = Transform3D(1, 0, 0, 0, 0.63397306, 0.7733551, 0, -0.7733551, 0.63397306, 3.9006906, 0.85176086, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=642409941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03695011, -0.3586434, -0.10379958)
+material_override = SubResource("StandardMaterial3D_t8y77")
+use_collision = true
+size = Vector3(16.59983, 0.30273438, 16.916168)
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=684665 node_paths=PackedStringArray("camera_pivot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5577054, 0)
+script = ExtResource("3_ly21k")
+camera_pivot = NodePath("Camera")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1688768254]
+shape = SubResource("BoxShape3D_dgfsc")
+
+[node name="Camera" type="Node3D" parent="Player" unique_id=1368966469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3011803, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Camera" unique_id=959353383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36939853, 0)
+
+[node name="Chest" parent="." unique_id=895048168 instance=ExtResource("4_bgpfy")]
+transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, -4.2707443, 0.051912785, 1.2874942)
+
+[node name="Torch" parent="." unique_id=117950583 instance=ExtResource("5_mynxe")]
+transform = Transform3D(0.333, 0, 0, 0, 0.333, 0, 0, 0, 0.333, -0.7280054, 0.045405865, 1.7723842)
+
+[node name="Tree" parent="." unique_id=2099815087 instance=ExtResource("6_tm8i7")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0.79864365, -2.8576286, 1.0349269)
+
+[node name="Verity" type="CharacterBody3D" parent="." unique_id=769835779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.084293)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Verity" unique_id=1434849171]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.245965, 0)
+shape = SubResource("SphereShape3D_dgfsc")
+
+[node name="Model" parent="Verity" unique_id=1363097904 instance=ExtResource("3_yl8ux")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=856919827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.2059145)
+
+[node name="BigVerity" parent="CharacterBody3D" unique_id=791771064 instance=ExtResource("1_t8y77")]
+transform = Transform3D(-0.008886621, 0, -0.99996054, 0, 1, 0, 0.99996054, 0, -0.008886621, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1631663275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.149292, 0)
+shape = SubResource("CapsuleShape3D_dgfsc")

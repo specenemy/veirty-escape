@@ -1,0 +1,11 @@
+Model Information:
+* title:	Verity™
+* source:	https://sketchfab.com/3d-models/veritytm-3687f216359846fda4e54a2164a70a69
+* author:	TrojanDeath (https://sketchfab.com/RustyPan90)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Verity™" (https://sketchfab.com/3d-models/veritytm-3687f216359846fda4e54a2164a70a69) by TrojanDeath (https://sketchfab.com/RustyPan90) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
